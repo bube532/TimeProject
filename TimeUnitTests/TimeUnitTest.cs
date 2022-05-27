@@ -68,21 +68,7 @@ namespace TimeUnitTests
 
             #region Assert
 
-            // это было сделано из-за того что он криво сравнивает массивы
-            string expectedString = "";
-            string resultString = "";
-
-            foreach (var item in expected)
-            {
-                expectedString += item;
-            }
-            foreach (var item in result)
-            {
-                resultString += item;
-            }
-
-
-            Assert.AreEqual(expectedString, resultString);
+            CollectionAssert.AreEquivalent(expected, result);
 
             #endregion
         }
@@ -146,21 +132,7 @@ namespace TimeUnitTests
 
             #region Assert
 
-            // это было сделано из-за того что он криво сравнивает массивы
-            string expectedString = "";
-            string resultString = "";
-
-            foreach (var item in expected)
-            {
-                expectedString += item;
-            }
-            foreach (var item in result)
-            {
-                resultString += item;
-            }
-
-
-            Assert.AreNotEqual(expectedString, resultString);
+            CollectionAssert.AreNotEquivalent(expected, result);
 
             #endregion
         }
@@ -217,21 +189,7 @@ namespace TimeUnitTests
 
             #region Assert
 
-            // это было сделано из-за того что он криво сравнивает массивы
-            string expectedString = "";
-            string resultString = "";
-
-            foreach (var item in expected)
-            {
-                expectedString += item;
-            }
-            foreach (var item in result)
-            {
-                resultString += item;
-            }
-
-
-            Assert.AreEqual(expectedString, resultString);
+            CollectionAssert.AreEquivalent(expected, result);
 
             #endregion
         }
@@ -280,21 +238,7 @@ namespace TimeUnitTests
 
             #region Assert
 
-            // это было сделано из-за того что он криво сравнивает массивы
-            string expectedString = "";
-            string resultString = "";
-
-            foreach (var item in expected)
-            {
-                expectedString += item;
-            }
-            foreach (var item in result)
-            {
-                resultString += item;
-            }
-
-
-            Assert.AreEqual(expectedString, resultString);
+            CollectionAssert.AreEquivalent(expected, result);
 
             #endregion
         }
@@ -341,21 +285,7 @@ namespace TimeUnitTests
 
             #region Assert
 
-            // это было сделано из-за того что он криво сравнивает массивы
-            string expectedString = "";
-            string resultString = "";
-
-            foreach (var item in expected)
-            {
-                expectedString += item;
-            }
-            foreach (var item in result)
-            {
-                resultString += item;
-            }
-
-
-            Assert.AreEqual(expectedString, resultString);
+            CollectionAssert.AreEquivalent(expected, result);
 
             #endregion
         }
@@ -388,7 +318,6 @@ namespace TimeUnitTests
             int consultationTime = 30;
 
             List<string> resultList = new List<string>();
-            resultList.Add("");
 
             string[] expected = resultList.ToArray();
 
@@ -402,21 +331,7 @@ namespace TimeUnitTests
 
             #region Assert
 
-            // это было сделано из-за того что он криво сравнивает массивы
-            string expectedString = "";
-            string resultString = "";
-
-            foreach (var item in expected)
-            {
-                expectedString += item;
-            }
-            foreach (var item in result)
-            {
-                resultString += item;
-            }
-
-
-            Assert.AreEqual(expectedString, resultString);
+            CollectionAssert.AreEquivalent(expected, result);
 
             #endregion
         }
@@ -465,21 +380,7 @@ namespace TimeUnitTests
 
             #region Assert
 
-            // это было сделано из-за того что он криво сравнивает массивы
-            string expectedString = "";
-            string resultString = "";
-
-            foreach (var item in expected)
-            {
-                expectedString += item;
-            }
-            foreach (var item in result)
-            {
-                resultString += item;
-            }
-
-
-            Assert.AreEqual(expectedString, resultString);
+            CollectionAssert.AreEquivalent(expected, result);
 
             #endregion
         }
@@ -528,21 +429,7 @@ namespace TimeUnitTests
 
             #region Assert
 
-            // это было сделано из-за того что он криво сравнивает массивы
-            string expectedString = "";
-            string resultString = "";
-
-            foreach (var item in expected)
-            {
-                expectedString += item;
-            }
-            foreach (var item in result)
-            {
-                resultString += item;
-            }
-
-
-            Assert.AreEqual(expectedString, resultString);
+            CollectionAssert.AreEquivalent(expected, result);
 
             #endregion
         }
@@ -590,21 +477,7 @@ namespace TimeUnitTests
 
             #region Assert
 
-            // это было сделано из-за того что он криво сравнивает массивы
-            string expectedString = "";
-            string resultString = "";
-
-            foreach (var item in expected)
-            {
-                expectedString += item;
-            }
-            foreach (var item in result)
-            {
-                resultString += item;
-            }
-
-
-            Assert.AreEqual(expectedString, resultString);
+            CollectionAssert.AreEquivalent(expected, result);
 
             #endregion
         }
@@ -637,7 +510,6 @@ namespace TimeUnitTests
             int consultationTime = 30;
 
             List<string> resultList = new List<string>();
-            resultList.Add("");
 
             string[] expected = resultList.ToArray();
 
@@ -651,21 +523,109 @@ namespace TimeUnitTests
 
             #region Assert
 
-            // это было сделано из-за того что он криво сравнивает массивы
-            string expectedString = "";
-            string resultString = "";
+            CollectionAssert.AreEquivalent(expected, result);
 
-            foreach (var item in expected)
-            {
-                expectedString += item;
-            }
-            foreach (var item in result)
-            {
-                resultString += item;
-            }
+            #endregion
+        }
 
+        /// <summary>
+        /// Получаем True и пустое раписание
+        /// Потому что время консультации на столько большое, что свободного времени нет
+        /// </summary>
+        [TestMethod]
+        public void TimeLibrary_TestMethod11_NotEnoughtTimeReturned()
+        {
+            #region Arrange
 
-            Assert.AreEqual(expectedString, resultString);
+            List<TimeSpan> startTimesList = new List<TimeSpan>();
+            startTimesList.Add(new TimeSpan(8, 00, 00));
+
+            List<int> durationsList = new List<int>();
+            durationsList.Add(600);
+
+            int[] durations = durationsList.ToArray();
+            TimeSpan[] startTimes = startTimesList.ToArray();
+
+            TimeSpan beginWorkingTime = new TimeSpan(08, 00, 00);
+            TimeSpan endWorkingTime = new TimeSpan(18, 00, 00);
+
+            int consultationTime = 30;
+
+            List<string> resultList = new List<string>();
+
+            string[] expected = resultList.ToArray();
+
+            #endregion
+
+            #region Act
+
+            string[] result = Calculations.AvailablePeriods(startTimes, durations, beginWorkingTime, endWorkingTime, consultationTime);
+
+            #endregion
+
+            #region Assert
+
+            CollectionAssert.AreEquivalent(expected, result);
+
+            #endregion
+        }
+
+        /// <summary>
+        /// Получаем True и пустое раписание
+        /// Потому что время и количество консультаций на столько большое, что свободного времени нет
+        /// </summary>
+        [TestMethod]
+        public void TimeLibrary_TestMethod12_ALotOfConsultationsReturned()
+        {
+            #region Arrange
+
+            List<TimeSpan> startTimesList = new List<TimeSpan>();
+            startTimesList.Add(new TimeSpan(8, 00, 00));
+            startTimesList.Add(new TimeSpan(9, 00, 00));
+            startTimesList.Add(new TimeSpan(10, 00, 00));
+            startTimesList.Add(new TimeSpan(11, 00, 00));
+            startTimesList.Add(new TimeSpan(12, 00, 00));
+            startTimesList.Add(new TimeSpan(13, 00, 00));
+            startTimesList.Add(new TimeSpan(14, 00, 00));
+            startTimesList.Add(new TimeSpan(15, 00, 00));
+            startTimesList.Add(new TimeSpan(16, 00, 00));
+            startTimesList.Add(new TimeSpan(17, 00, 00));
+
+            List<int> durationsList = new List<int>();
+            durationsList.Add(60);
+            durationsList.Add(60);
+            durationsList.Add(60);
+            durationsList.Add(60);
+            durationsList.Add(60);
+            durationsList.Add(60);
+            durationsList.Add(60);
+            durationsList.Add(60);
+            durationsList.Add(60);
+            durationsList.Add(60);
+
+            int[] durations = durationsList.ToArray();
+            TimeSpan[] startTimes = startTimesList.ToArray();
+
+            TimeSpan beginWorkingTime = new TimeSpan(08, 00, 00);
+            TimeSpan endWorkingTime = new TimeSpan(18, 00, 00);
+
+            int consultationTime = 30;
+
+            List<string> resultList = new List<string>();
+
+            string[] expected = resultList.ToArray();
+
+            #endregion
+
+            #region Act
+
+            string[] result = Calculations.AvailablePeriods(startTimes, durations, beginWorkingTime, endWorkingTime, consultationTime);
+
+            #endregion
+
+            #region Assert
+
+            CollectionAssert.AreEquivalent(expected, result);
 
             #endregion
         }
