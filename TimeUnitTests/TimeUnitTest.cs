@@ -629,5 +629,48 @@ namespace TimeUnitTests
 
             #endregion
         }
+
+        /// <summary>
+        /// Получаем True и пустое раписание
+        /// Потому что StartTime и Duration имеют разную длинну
+        /// </summary>
+        [TestMethod]
+        public void TimeLibrary_TestMethod13_StartTimeAndDurationAreNotEqualReturned()
+        {
+            #region Arrange
+
+            List<TimeSpan> startTimesList = new List<TimeSpan>();
+            startTimesList.Add(new TimeSpan(8, 00, 00));
+
+            List<int> durationsList = new List<int>();
+            durationsList.Add(60);
+            durationsList.Add(60);
+
+            int[] durations = durationsList.ToArray();
+            TimeSpan[] startTimes = startTimesList.ToArray();
+
+            TimeSpan beginWorkingTime = new TimeSpan(08, 00, 00);
+            TimeSpan endWorkingTime = new TimeSpan(18, 00, 00);
+
+            int consultationTime = 30;
+
+            List<string> resultList = new List<string>();
+
+            string[] expected = resultList.ToArray();
+
+            #endregion
+
+            #region Act
+
+            string[] result = Calculations.AvailablePeriods(startTimes, durations, beginWorkingTime, endWorkingTime, consultationTime);
+
+            #endregion
+
+            #region Assert
+
+            CollectionAssert.AreEquivalent(expected, result);
+
+            #endregion
+        }
     }
 }

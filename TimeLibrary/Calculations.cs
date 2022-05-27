@@ -19,6 +19,11 @@ namespace TimeLibrary
         /// <returns></returns>
         public static string[] AvailablePeriods(TimeSpan[] startTimes, int[] durations, TimeSpan beginWorkingTime, TimeSpan endWorkingTime, int consultationTime)
         {
+            if (startTimes.Length != durations.Length)
+            {
+                return new string[0];
+            }
+
             List<string> intervalList = new List<string>();
 
             TimeSpan nextDurationTime = new TimeSpan();
